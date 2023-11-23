@@ -1,10 +1,36 @@
 import React, { useState } from "react";
-import FilterButton from "../utility/FilterButton.jsx";
-import { data, categories } from "../data/data.js";
+// import FilterButton from "../utility/FilterButton.jsx";
+import { data } from "../data/data.js";
 
 const Food = () => {
   //   console.log(data, categories);
   const [foods, setFoods] = useState(data);
+
+  //   Filter by Food
+  const filterByType = (category) => {
+    setFoods(
+      data.filter((item) => {
+        return item.category === category;
+      })
+    );
+  };
+
+  //   Filter by price
+  const filterByPrice = (price) => {
+    setFoods(
+      data.filter((item) => {
+        return item.price === price;
+      })
+    );
+  };
+
+  //   const handlePriceBtnClick = (price) => {
+  //     filterByPrice(price);
+  //   };
+
+  //   const handleTypeBtnClick = (type) => {
+  //     filterByPrice(type);
+  //   };
 
   return (
     <div className="max-w-[1640px] m-auto p-4 py-12">
@@ -17,21 +43,99 @@ const Food = () => {
         <div>
           <p className="font-bold text-gray-700">Filter by Type</p>
           <div className="flex justify-between flex-wrap">
-            <FilterButton btnName="All" />
-            <FilterButton btnName="Burgers" />
-            <FilterButton btnName="Chicken" />
-            <FilterButton btnName="Salads" />
-            <FilterButton btnName="Pizza" />
+            {/* <FilterButton btnName="All" /> */}
+            {/* <FilterButton
+              btnName="Burgers"
+              handleTypeBtnClick={() => handleTypeBtnClick("burger")}
+            />
+            <FilterButton
+              btnName="Pizza"
+              handleTypeBtnClick={() => handleTypeBtnClick("pizza")}
+            />
+            <FilterButton
+              btnName="Salads"
+              handleTypeBtnClick={() => handleTypeBtnClick("salad")}
+            />
+            <FilterButton
+              btnName="Chicken"
+              handleTypeBtnClick={() => handleTypeBtnClick("chicken")}
+            /> */}
+            <button
+              className="m-1 border-orange-600 text-orange-600 hover:text-white hover:bg-orange-600"
+              onClick={() => setFoods(data)}
+            >
+              All
+            </button>
+            <button
+              className="m-1 border-orange-600 text-orange-600 hover:text-white hover:bg-orange-600"
+              onClick={() => filterByType("burger")}
+            >
+              Burgers
+            </button>
+            <button
+              className="m-1 border-orange-600 text-orange-600 hover:text-white hover:bg-orange-600"
+              onClick={() => filterByType("pizza")}
+            >
+              Pizza
+            </button>
+            <button
+              className="m-1 border-orange-600 text-orange-600 hover:text-white hover:bg-orange-600"
+              onClick={() => filterByType("salad")}
+            >
+              Salads
+            </button>
+            <button
+              className="m-1 border-orange-600 text-orange-600 hover:text-white hover:bg-orange-600"
+              onClick={() => filterByType("chicken")}
+            >
+              Chicken
+            </button>
           </div>
         </div>
         {/* Filter by Price */}
         <div>
           <p className="font-bold text-gray-700">Filter by Price</p>
           <div className="flex justify-between max-w-[390px] w-full">
-            <FilterButton btnName="$" />
-            <FilterButton btnName="$$" />
-            <FilterButton btnName="$$$" />
-            <FilterButton btnName="$$$$" />
+            {/* <FilterButton
+              btnName="$"
+              handlePriceBtnClick={() => handlePriceBtnClick("$")}
+            />
+            <FilterButton
+              btnName="$$"
+              handlePriceBtnClick={() => handlePriceBtnClick("$$")}
+            />
+            <FilterButton
+              btnName="$$$"
+              handlePriceBtnClick={() => handlePriceBtnClick("$$$")}
+            />
+            <FilterButton
+              btnName="$$$$"
+              handlePriceBtnClick={() => handlePriceBtnClick("$$$$")}
+            /> */}
+            <button
+              className="m-1 border-orange-600 text-orange-600 hover:text-white hover:bg-orange-600"
+              onClick={() => filterByPrice("$")}
+            >
+              $
+            </button>
+            <button
+              className="m-1 border-orange-600 text-orange-600 hover:text-white hover:bg-orange-600"
+              onClick={() => filterByPrice("$$")}
+            >
+              $$
+            </button>
+            <button
+              className="m-1 border-orange-600 text-orange-600 hover:text-white hover:bg-orange-600"
+              onClick={() => filterByPrice("$$$")}
+            >
+              $$$
+            </button>
+            <button
+              className="m-1 border-orange-600 text-orange-600 hover:text-white hover:bg-orange-600"
+              onClick={() => filterByPrice("$$$")}
+            >
+              $$$
+            </button>
           </div>
         </div>
       </div>
